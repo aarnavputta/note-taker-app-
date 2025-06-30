@@ -46,7 +46,7 @@ export default function RootLayout({
           zIndex: 20,
           background: '#e0e0e0',
         }}>
-          {/* Small rectangle in the top left */}
+          {/* Small rectangle in the to left */}
           <div className="top-left-rect" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span
               className={geistMono.className}
