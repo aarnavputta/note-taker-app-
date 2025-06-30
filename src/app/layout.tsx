@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "White Template",
@@ -26,8 +34,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body 
-        className={inter.className}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{
           margin: 0,
           padding: 0,
@@ -49,7 +57,7 @@ export default function RootLayout({
           <div className="top-left-rect" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span
               style={{
-                fontFamily: 'Geist Mono, monospace',
+                fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: 32,
                 color: '#111',
               }}
@@ -80,7 +88,7 @@ export default function RootLayout({
                 >
                   <span
                     style={{
-                      fontFamily: 'Geist Mono, monospace',
+                      fontFamily: 'var(--font-geist-mono), monospace',
                       fontSize: 20,
                       color: '#111',
                     }}
