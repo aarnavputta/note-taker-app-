@@ -50,9 +50,6 @@ a {
   transition: background 0.2s;
   z-index: 10;
 }
-.top-left-rect:hover {
-  background: #bdbdbd;
-}
 
 .side-rect {
   width: 250px;
