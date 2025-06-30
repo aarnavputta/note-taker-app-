@@ -92,7 +92,7 @@ export default function RootLayout({
               </Link>
             ))}
             {/* Non-interactive grey area to fill remaining space */}
-            <div style={{ flex: 1, background: 'rgba(217,217,217,0.4)', pointerEvents: 'none' }} />
+            <div style={{ flex: 1, background: '#e0e0e0', pointerEvents: 'none' }} />
           </div>
         </div>
         {/* Main content */}
