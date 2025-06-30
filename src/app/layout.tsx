@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "White Template",
@@ -46,7 +47,17 @@ export default function RootLayout({
           background: '#e0e0e0',
         }}>
           {/* Small rectangle in the top left */}
-          <div className="top-left-rect" />
+          <div className="top-left-rect" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span
+              className={geistMono.className}
+              style={{
+                fontSize: 32,
+                color: '#111',
+              }}
+            >
+              libello.
+            </span>
+          </div>
           {/* Stack of 6 boxes below the top-left rectangle */}
           <div
             style={{
