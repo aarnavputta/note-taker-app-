@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
-const geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "White Template",
@@ -49,8 +48,8 @@ export default function RootLayout({
           {/* Small rectangle in the top left */}
           <div className="top-left-rect" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span
-              className={geistMono.className}
               style={{
+                fontFamily: 'Geist Mono, monospace',
                 fontSize: 32,
                 color: '#111',
               }}
@@ -80,8 +79,8 @@ export default function RootLayout({
                   }}
                 >
                   <span
-                    className={geistMono.className}
                     style={{
+                      fontFamily: 'Geist Mono, monospace',
                       fontSize: 20,
                       color: '#111',
                     }}
