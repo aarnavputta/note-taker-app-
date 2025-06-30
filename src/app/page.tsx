@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 // TODO: Import Geist Mono font for production use
 
 export default function Home() {
