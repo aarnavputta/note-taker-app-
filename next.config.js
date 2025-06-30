@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+  // No experimental/appDir or font code needed
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig; 
