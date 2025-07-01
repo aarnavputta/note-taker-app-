@@ -103,7 +103,9 @@ export default function RootLayout({
           </div>
         </div>
         {/* Main content */}
-        <div style={{ marginLeft: '250px' }}>{children}</div>
+        <div style={{ marginLeft: '250px' }}>
+          {children}
+        </div>
       </body>
     </html>
   );
