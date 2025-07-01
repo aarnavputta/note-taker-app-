@@ -9,7 +9,7 @@ export default function Home() {
   const navItems = [
     { label: "recents", key: "recents" },
     { label: "schedule", key: "about" },
-    { label: "faq", key: "how" },
+    { label: "FAQ", key: "how" },
   ];
   const [selected, setSelected] = useState("recents");
 
@@ -113,5 +113,6 @@ export default function Home() {
         {renderTabContent()}
       </div>
     </div>
+    
   );
 }
