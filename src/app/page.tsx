@@ -53,24 +53,8 @@ export default function Home() {
         }}>home.</span>
       </div>
       {/* NavBar */}
-      <nav
-        style={{
-          width: '1192px', // Match Figma width
-          margin: '0 auto',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            width: '100%',
-            justifyContent: 'flex-start',
-            gap: '40px',
-            borderBottom: '1px solid #e0e0e0', // Light underline for the whole bar
-          }}
-        >
+      <div className="responsive-container">
+        <nav className="responsive-navbar">
           {navItems.map((item) => {
             const isActive = selected === item.key;
             return (
@@ -97,8 +81,34 @@ export default function Home() {
               </button>
             );
           })}
-        </div>
-      </nav>
+        </nav>
+      </div>
+      <style jsx>{`
+        .responsive-container {
+          width: 100%;
+          max-width: 1192px;
+          margin: 0 auto;
+          padding-left: 16px;
+          padding-right: 16px;
+          box-sizing: border-box;
+        }
+        .responsive-navbar {
+          display: flex;
+          justify-content: flex-start;
+          gap: 40px;
+          border-bottom: 1px solid #e0e0e0;
+          overflow-x: auto;
+        }
+        @media (max-width: 700px) {
+          .responsive-navbar {
+            gap: 16px;
+          }
+          .responsive-container {
+            padding-left: 8px;
+            padding-right: 8px;
+          }
+        }
+      `}</style>
       {/* Tab content box */}
       <div style={{
         width: '80%',
