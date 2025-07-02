@@ -53,7 +53,14 @@ export default function Home() {
         }}>home.</span>
       </div>
       {/* NavBar */}
-      <div className="responsive-container">
+      <div style={{
+        width: '90%',
+        maxWidth: '1600px',
+        margin: '0 auto',
+        paddingLeft: 16,
+        paddingRight: 16,
+        boxSizing: 'border-box',
+      }}>
         <nav className="responsive-navbar">
           {navItems.map((item) => {
             const isActive = selected === item.key;

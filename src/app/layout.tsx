@@ -1,3 +1,8 @@
+// Remove 'use client' directive if present
+// Remove useState import
+// Remove hamburger button, overlay, and all mobile/hamburger logic
+// Restore sidebar and main content to original format
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
@@ -44,15 +49,18 @@ export default function RootLayout({
         }}
       >
         {/* Sidebar (top-left box and 6 boxes) */}
-        <div style={{
-          width: '250px',
-          height: '100vh',
-          position: 'fixed',
-          left: 0,
-          top: 0,
-          zIndex: 20,
-          background: '#e0e0e0',
-        }}>
+        <div
+          className="sidebar"
+          style={{
+            width: '250px',
+            height: '100vh',
+            position: 'fixed',
+            left: 0,
+            top: 0,
+            zIndex: 20,
+            background: '#e0e0e0',
+          }}
+        >
           {/* Small rectangle in the top left */}
           <div className="top-left-rect" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span
@@ -103,9 +111,7 @@ export default function RootLayout({
           </div>
         </div>
         {/* Main content */}
-        <div style={{ marginLeft: '250px' }}>
-          {children}
-        </div>
+        <div className="main-content" style={{ marginLeft: '250px' }}>{children}</div>
       </body>
     </html>
   );
