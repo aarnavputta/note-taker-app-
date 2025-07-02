@@ -7,14 +7,15 @@ export default function Notes() {
       position: 'relative',
     }}>
       <div style={{
-        width: '1262px',
+        position: 'relative',
+        left: 0,
+        width: 'calc(100vw - 250px)', // Sidebar is 250px
         height: '125px',
         backgroundColor: 'rgba(217,217,217,0.2)',
         display: 'flex',
         alignItems: 'center',
         paddingLeft: '24px',
-        margin: '0 auto',
-        marginTop: '0',
+        margin: 0,
         marginBottom: '32px',
         boxSizing: 'border-box',
       }}>

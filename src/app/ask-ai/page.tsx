@@ -7,14 +7,13 @@ export default function AskAI() {
       position: 'relative',
     }}>
       <div style={{
-        width: '1262px',
+        width: '100%',
         height: '125px',
         backgroundColor: 'rgba(217,217,217,0.2)',
         display: 'flex',
         alignItems: 'center',
         paddingLeft: '24px',
-        margin: '0 auto',
-        marginTop: '0',
+        margin: 0,
         marginBottom: '32px',
         boxSizing: 'border-box',
       }}>
