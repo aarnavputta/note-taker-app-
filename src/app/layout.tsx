@@ -5,7 +5,6 @@
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,15 +22,6 @@ export const metadata: Metadata = {
   description: "A plain white Next.js template",
 };
 
-const boxLabels = [
-  { label: "home.", href: "/" },
-  { label: "add meeting.", href: "/add-meeting" },
-  { label: "notes.", href: "/notes" },
-  { label: "integrate.", href: "/integrate" },
-  { label: "ask ai.", href: "/ask-ai" },
-  { label: "settings.", href: "/settings" },
-];
-
 export default function RootLayout({
   children,
 }: {
@@ -48,70 +38,7 @@ export default function RootLayout({
           minHeight: '100vh',
         }}
       >
-        {/* Sidebar (top-left box and 6 boxes) */}
-        <div
-          className="sidebar"
-          style={{
-            width: '250px',
-            height: '100vh',
-            position: 'fixed',
-            left: 0,
-            top: 0,
-            zIndex: 20,
-            background: '#e0e0e0',
-          }}
-        >
-          {/* Small rectangle in the top left */}
-          <div className="top-left-rect" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span
-              style={{
-                fontFamily: 'var(--font-geist-mono), monospace',
-                fontSize: 32,
-                color: '#111',
-              }}
-            >
-              libello.
-            </span>
-          </div>
-          {/* Stack of 6 boxes below the top-left rectangle */}
-          <div
-            style={{
-              marginTop: '79px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0px',
-              zIndex: 10,
-            }}
-          >
-            {boxLabels.map((item, i) => (
-              <Link key={i} href={item.href} style={{ textDecoration: 'none' }}>
-                <div
-                  className="side-rect"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-geist-mono), monospace',
-                      fontSize: 20,
-                      color: '#111',
-                    }}
-                  >
-                    {item.label}
-                  </span>
-                </div>
-              </Link>
-            ))}
-            {/* Non-interactive grey area to fill remaining space */}
-            <div style={{ flex: 1, background: '#e0e0e0', pointerEvents: 'none' }} />
-          </div>
-        </div>
-        {/* Main content */}
-        <div className="main-content" style={{ marginLeft: '250px' }}>{children}</div>
+        {children}
       </body>
     </html>
   );

@@ -1,135 +1,131 @@
 "use client";
-import Link from "next/link";
-import { useState } from "react";
-// import Image from "next/image";
-// TODO: Import Geist Mono font for production use
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-export default function Home() {
-  const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
-  const navItems = [
-    { label: "recents", key: "recents" },
-    { label: "schedule", key: "about" },
-    { label: "FAQ", key: "how" },
-  ];
-  const [selected, setSelected] = useState("recents");
-
-  const renderTabContent = () => {
-    switch (selected) {
-      case "recents":
-        return <div>Recents content goes here.</div>;
-      case "about":
-        return <div>About us content goes here.</div>;
-      case "how":
-        return <div>How to use content goes here.</div>;
-      default:
-        return null;
-    }
-  };
-
+export default function Login() {
+  const router = useRouter();
   return (
-    <div style={{
-      width: '100%',
-      minHeight: '100vh',
-      backgroundColor: 'white',
-      position: 'relative',
-    }}>
-      {/* Large heading at the top */}
+    <div style={{ minHeight: '100vh', background: 'white' }}>
+      {/* Logo */}
+      <div style={{ padding: 32 }}>
+        <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 40 }}>libello.</span>
+      </div>
+      {/* Centered login box */}
       <div style={{
-        width: '100%',
-        height: '125px',
-        backgroundColor: 'rgba(217,217,217,0.2)',
+        maxWidth: 600,
+        margin: '0 auto',
+        marginTop: 48,
+        background: '#f3f3f3',
+        borderRadius: 4,
+        padding: '64px 32px',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
-        paddingLeft: '24px',
-        margin: 0,
-        marginBottom: '32px',
-        boxSizing: 'border-box',
-      }}>
-        <span style={{
-          fontFamily: 'Geist Mono, monospace',
-          fontSize: 80,
-          color: '#000',
-          lineHeight: 1,
-        }}>home.</span>
-      </div>
-      {/* NavBar */}
-      <div style={{
-        width: '90%',
-        maxWidth: '1600px',
-        margin: '0 auto',
-        paddingLeft: 16,
-        paddingRight: 16,
-        boxSizing: 'border-box',
-      }}>
-        <nav className="responsive-navbar">
-          {navItems.map((item) => {
-            const isActive = selected === item.key;
-            return (
-              <button
-                key={item.key}
-                onClick={() => setSelected(item.key)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  outline: 'none',
-                  fontFamily: 'Geist Mono, monospace',
-                  fontSize: 24,
-                  color: '#111',
-                  padding: '8px 8px 4px 8px',
-                  borderBottom: isActive ? '2px solid #111' : '2px solid transparent',
-                  transition: 'border-bottom 0.2s',
-                  cursor: 'pointer',
-                  minWidth: 80,
-                  textAlign: 'center',
-                  marginBottom: '-1px', // Overlay dark underline
-                }}
-              >
-                {item.label}
-              </button>
-            );
-          })}
-        </nav>
-      </div>
-      <style jsx>{`
-        .responsive-container {
-          width: 100%;
-          max-width: 1192px;
-          margin: 0 auto;
-          padding-left: 16px;
-          padding-right: 16px;
-          box-sizing: border-box;
-        }
-        .responsive-navbar {
-          display: flex;
-          justify-content: flex-start;
-          gap: 40px;
-          border-bottom: 1px solid #e0e0e0;
-          overflow-x: auto;
-        }
-        @media (max-width: 700px) {
-          .responsive-navbar {
-            gap: 16px;
-          }
-          .responsive-container {
-            padding-left: 8px;
-            padding-right: 8px;
-          }
-        }
-      `}</style>
-      {/* Tab content box */}
-      <div style={{
-        width: '80%',
-        margin: '0 auto',
-        background: 'white',
-        minHeight: 200,
-        borderRadius: 8,
         boxShadow: '0 0 0 0 rgba(0,0,0,0)',
-        padding: 32,
-        marginTop: 24,
       }}>
-        {renderTabContent()}
+        <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 26, marginBottom: 32, textAlign: 'center' }}>
+          Log in or sign up.
+        </div>
+        <input
+          type="email"
+          placeholder="email"
+          style={{
+            width: 320,
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: 18,
+            padding: '8px 12px',
+            background: '#ddd',
+            border: 'none',
+            borderRadius: 2,
+            marginBottom: 16,
+            outline: 'none',
+          }}
+        />
+        <input
+          type="password"
+          placeholder="password"
+          style={{
+            width: 320,
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: 18,
+            padding: '8px 12px',
+            background: '#ddd',
+            border: 'none',
+            borderRadius: 2,
+            marginBottom: 24,
+            outline: 'none',
+          }}
+        />
+        <button
+          style={{
+            width: 200,
+            background: 'black',
+            color: 'white',
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: 18,
+            padding: '10px 0',
+            border: 'none',
+            borderRadius: 2,
+            marginBottom: 32,
+            cursor: 'pointer',
+          }}
+          onClick={() => router.push('/homepage/home')}
+        >
+          continue
+        </button>
+        <div style={{ marginBottom: 16, fontFamily: 'Geist Mono, monospace', fontSize: 16, color: '#222', textAlign: 'center' }}>
+          No account? Sign up
+        </div>
+        {/* Divider */}
+        <div style={{ display: 'flex', alignItems: 'center', width: 400, margin: '16px 0' }}>
+          <div style={{ flex: 1, height: 1, background: '#ddd' }} />
+          <span style={{ margin: '0 16px', color: '#444', fontFamily: 'Geist Mono, monospace', fontSize: 18 }}>or</span>
+          <div style={{ flex: 1, height: 1, background: '#ddd' }} />
+        </div>
+        {/* Google button */}
+        <button
+          style={{
+            width: 320,
+            background: '#ddd',
+            color: 'black',
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: 18,
+            padding: '10px 0',
+            border: 'none',
+            borderRadius: 2,
+            marginBottom: 16,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 12,
+            cursor: 'pointer',
+          }}
+        >
+          <Image src="/Google__G__logo.svg.png" alt="Google logo" width={24} height={24} />
+          continue with Google
+        </button>
+        {/* Facebook button */}
+        <button
+          style={{
+            width: 320,
+            background: '#ddd',
+            color: 'black',
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: 18,
+            padding: '10px 0',
+            border: 'none',
+            borderRadius: 2,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            gap: 12,
+            cursor: 'pointer',
+          }}
+        >
+          <Image src="/Facebook_Logo_2023.png" alt="Facebook logo" width={28} height={28} style={{ marginLeft: 8 }} />
+          <span style={{ marginLeft: 8 }}>continue with Facebook</span>
+        </button>
       </div>
     </div>
-    
   );
-}
+} 
