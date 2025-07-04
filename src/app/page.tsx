@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Login() {
   const router = useRouter();
@@ -74,7 +75,7 @@ export default function Login() {
           continue
         </button>
         <div style={{ marginBottom: 16, fontFamily: 'Geist Mono, monospace', fontSize: 16, color: '#222', textAlign: 'center' }}>
-          No account? Sign up
+          No account? <Link href="/signup" style={{ color: '#1a0dab', textDecoration: 'underline', cursor: 'pointer' }}>Sign up</Link>
         </div>
         {/* Divider */}
         <div style={{ display: 'flex', alignItems: 'center', width: 400, margin: '16px 0' }}>
