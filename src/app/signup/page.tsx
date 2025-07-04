@@ -5,6 +5,8 @@ import { useState } from "react";
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [eyeHover, setEyeHover] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [eyeConfirmHover, setEyeConfirmHover] = useState(false);
 
   return (
     <div style={{ minHeight: '100vh', background: 'white' }}>
@@ -87,6 +89,40 @@ export default function SignUp() {
               width: 24,
               height: 24,
               opacity: showPassword ? 0.8 : (eyeHover ? 0.8 : 0.4),
+              cursor: 'pointer',
+              transition: 'opacity 0.2s',
+            }}
+          />
+        </div>
+        <div style={{ position: 'relative', width: 320, marginBottom: 24 }}>
+          <input
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="confirm password"
+            style={{
+              width: '100%',
+              fontFamily: 'Geist Mono, monospace',
+              fontSize: 18,
+              padding: '8px 40px 8px 12px',
+              background: '#ddd',
+              border: 'none',
+              borderRadius: 2,
+              outline: 'none',
+            }}
+          />
+          <img
+            src="/eye.png"
+            alt="Show confirm password"
+            onClick={() => setShowConfirmPassword((v) => !v)}
+            onMouseEnter={() => setEyeConfirmHover(true)}
+            onMouseLeave={() => setEyeConfirmHover(false)}
+            style={{
+              position: 'absolute',
+              right: 10,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: 24,
+              height: 24,
+              opacity: showConfirmPassword ? 0.8 : (eyeConfirmHover ? 0.8 : 0.4),
               cursor: 'pointer',
               transition: 'opacity 0.2s',
             }}
