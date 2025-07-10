@@ -22,12 +22,11 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
-
     const dbConfig = {
-      user: DB_USER,
-      password: DB_PASSWORD,
-      server: DB_SERVER,
-      database: DB_DATABASE,
+      user: DB_USER as string,
+      password: DB_PASSWORD as string,
+      server: DB_SERVER as string,
+      database: DB_DATABASE as string,
       options: {
         encrypt: true,
         trustServerCertificate: false,

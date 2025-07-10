@@ -43,11 +43,28 @@ export async function POST(request: NextRequest) {
     }
 
     // Connect to DB
+    const { DB_USER, DB_PASSWORD, DB_SERVER, DB_DATABASE } = process.env;
+    if (!DB_USER || !DB_PASSWORD || !DB_SERVER || !DB_DATABASE) {
+      return NextResponse.json(
+        { error: 'Database configuration is missing in environment variables' },
+        { status: 500 }
+      );
+    }
+    const dbConfig = {
+      user: DB_USER as string,
+      password: DB_PASSWORD as string,
+      server: DB_SERVER as string,
+      database: DB_DATABASE as string,
+      options: {
+        encrypt: true,
+        trustServerCertificate: false,
+      },
+    };
     let pool;
     try {
       pool = await sql.connect(dbConfig);
     } catch (dbErr) {
-      console.error('DB connection error:', dbErr);
+      console.error('❌ DB connection error:', dbErr);
       return NextResponse.json(
         { error: 'Database connection failed' },
         { status: 500 }
