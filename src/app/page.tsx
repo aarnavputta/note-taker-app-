@@ -72,59 +72,59 @@ export default function Login() {
           </div>
         )}
         <form onSubmit={handleLogin} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <input
-            type="email"
-            placeholder="email"
+        <input
+          type="email"
+          placeholder="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            style={{
-              width: 320,
-              fontFamily: 'Geist Mono, monospace',
-              fontSize: 18,
-              padding: '8px 12px',
-              background: '#ddd',
-              border: 'none',
-              borderRadius: 2,
-              marginBottom: 16,
-              outline: 'none',
-            }}
-          />
-          <input
-            type="password"
-            placeholder="password"
+          style={{
+            width: 320,
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: 18,
+            padding: '8px 12px',
+            background: '#ddd',
+            border: 'none',
+            borderRadius: 2,
+            marginBottom: 16,
+            outline: 'none',
+          }}
+        />
+        <input
+          type="password"
+          placeholder="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
-            style={{
-              width: 320,
-              fontFamily: 'Geist Mono, monospace',
-              fontSize: 18,
-              padding: '8px 12px',
-              background: '#ddd',
-              border: 'none',
-              borderRadius: 2,
-              marginBottom: 24,
-              outline: 'none',
-            }}
-          />
-          <button
+          style={{
+            width: 320,
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: 18,
+            padding: '8px 12px',
+            background: '#ddd',
+            border: 'none',
+            borderRadius: 2,
+            marginBottom: 24,
+            outline: 'none',
+          }}
+        />
+        <button
             type="submit"
             disabled={isLoading}
-            style={{
-              width: 200,
+          style={{
+            width: 200,
               background: isLoading ? '#666' : 'black',
-              color: 'white',
-              fontFamily: 'Geist Mono, monospace',
-              fontSize: 18,
-              padding: '10px 0',
-              border: 'none',
-              borderRadius: 2,
-              marginBottom: 32,
+            color: 'white',
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: 18,
+            padding: '10px 0',
+            border: 'none',
+            borderRadius: 2,
+            marginBottom: 32,
               cursor: isLoading ? 'not-allowed' : 'pointer',
               opacity: isLoading ? 0.7 : 1,
-            }}
-          >
+          }}
+        >
             {isLoading ? 'Logging in...' : 'continue'}
-          </button>
+        </button>
         </form>
         <div style={{ marginBottom: 16, fontFamily: 'Geist Mono, monospace', fontSize: 16, color: '#222', textAlign: 'center' }}>
           No account? <Link href="/signup" style={{ color: '#1a0dab', textDecoration: 'underline', cursor: 'pointer' }}>Sign up</Link>

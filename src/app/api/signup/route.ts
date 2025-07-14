@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
     try {
       pool = await sql.connect(dbConfig);
     } catch (dbErr) {
-      console.error('❌ DB connection error:', dbErr);
+      console.error('DB connection error:', dbErr);
       return NextResponse.json(
         { error: 'Database connection failed' },
         { status: 500 }
