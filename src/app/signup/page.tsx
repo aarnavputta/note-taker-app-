@@ -7,7 +7,7 @@ export default function SignUp() {
   const [eyeHover, setEyeHover] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [eyeConfirmHover, setEyeConfirmHover] = useState(false);
-  
+
   // Form state
   const [formData, setFormData] = useState({
     name: '',
@@ -120,135 +120,135 @@ export default function SignUp() {
         )}
         
         <form onSubmit={handleSubmit} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <input
-            type="text"
+        <input
+          type="text"
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            placeholder="name"
-            style={{
-              width: 320,
-              fontFamily: 'Geist Mono, monospace',
-              fontSize: 18,
-              padding: '8px 12px',
-              background: '#ddd',
-              border: 'none',
-              borderRadius: 2,
-              marginBottom: 16,
-              outline: 'none',
-            }}
-          />
-          <input
-            type="email"
+          placeholder="name"
+          style={{
+            width: 320,
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: 18,
+            padding: '8px 12px',
+            background: '#ddd',
+            border: 'none',
+            borderRadius: 2,
+            marginBottom: 16,
+            outline: 'none',
+          }}
+        />
+        <input
+          type="email"
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            placeholder="email"
-            style={{
-              width: 320,
-              fontFamily: 'Geist Mono, monospace',
-              fontSize: 18,
-              padding: '8px 12px',
-              background: '#ddd',
-              border: 'none',
-              borderRadius: 2,
-              marginBottom: 16,
-              outline: 'none',
-            }}
-          />
-          <div style={{ position: 'relative', width: 320, marginBottom: 24 }}>
-            <input
-              type={showPassword ? "text" : "password"}
+          placeholder="email"
+          style={{
+            width: 320,
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: 18,
+            padding: '8px 12px',
+            background: '#ddd',
+            border: 'none',
+            borderRadius: 2,
+            marginBottom: 16,
+            outline: 'none',
+          }}
+        />
+        <div style={{ position: 'relative', width: 320, marginBottom: 24 }}>
+          <input
+            type={showPassword ? "text" : "password"}
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              placeholder="password"
-              style={{
-                width: '100%',
-                fontFamily: 'Geist Mono, monospace',
-                fontSize: 18,
-                padding: '8px 40px 8px 12px',
-                background: '#ddd',
-                border: 'none',
-                borderRadius: 2,
-                outline: 'none',
-              }}
-            />
-            <img
-              src="/eye.png"
-              alt="Show password"
-              onClick={() => setShowPassword((v) => !v)}
-              onMouseEnter={() => setEyeHover(true)}
-              onMouseLeave={() => setEyeHover(false)}
-              style={{
-                position: 'absolute',
-                right: 10,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                width: 24,
-                height: 24,
-                opacity: showPassword ? 0.8 : (eyeHover ? 0.8 : 0.4),
-                cursor: 'pointer',
-                transition: 'opacity 0.2s',
-              }}
-            />
-          </div>
-          <div style={{ position: 'relative', width: 320, marginBottom: 24 }}>
-            <input
-              type={showConfirmPassword ? "text" : "password"}
+            placeholder="password"
+            style={{
+              width: '100%',
+              fontFamily: 'Geist Mono, monospace',
+              fontSize: 18,
+              padding: '8px 40px 8px 12px',
+              background: '#ddd',
+              border: 'none',
+              borderRadius: 2,
+              outline: 'none',
+            }}
+          />
+          <img
+            src="/eye.png"
+            alt="Show password"
+            onClick={() => setShowPassword((v) => !v)}
+            onMouseEnter={() => setEyeHover(true)}
+            onMouseLeave={() => setEyeHover(false)}
+            style={{
+              position: 'absolute',
+              right: 10,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: 24,
+              height: 24,
+              opacity: showPassword ? 0.8 : (eyeHover ? 0.8 : 0.4),
+              cursor: 'pointer',
+              transition: 'opacity 0.2s',
+            }}
+          />
+        </div>
+        <div style={{ position: 'relative', width: 320, marginBottom: 24 }}>
+          <input
+            type={showConfirmPassword ? "text" : "password"}
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleInputChange}
-              placeholder="confirm password"
-              style={{
-                width: '100%',
-                fontFamily: 'Geist Mono, monospace',
-                fontSize: 18,
-                padding: '8px 40px 8px 12px',
-                background: '#ddd',
-                border: 'none',
-                borderRadius: 2,
-                outline: 'none',
-              }}
-            />
-            <img
-              src="/eye.png"
-              alt="Show confirm password"
-              onClick={() => setShowConfirmPassword((v) => !v)}
-              onMouseEnter={() => setEyeConfirmHover(true)}
-              onMouseLeave={() => setEyeConfirmHover(false)}
-              style={{
-                position: 'absolute',
-                right: 10,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                width: 24,
-                height: 24,
-                opacity: showConfirmPassword ? 0.8 : (eyeConfirmHover ? 0.8 : 0.4),
-                cursor: 'pointer',
-                transition: 'opacity 0.2s',
-              }}
-            />
-          </div>
-          <button
-            type="submit"
-            disabled={isLoading}
+            placeholder="confirm password"
             style={{
-              width: 200,
-              background: isLoading ? '#666' : 'black',
-              color: 'white',
+              width: '100%',
               fontFamily: 'Geist Mono, monospace',
               fontSize: 18,
-              padding: '10px 0',
+              padding: '8px 40px 8px 12px',
+              background: '#ddd',
               border: 'none',
               borderRadius: 2,
-              marginBottom: 32,
+              outline: 'none',
+            }}
+          />
+          <img
+            src="/eye.png"
+            alt="Show confirm password"
+            onClick={() => setShowConfirmPassword((v) => !v)}
+            onMouseEnter={() => setEyeConfirmHover(true)}
+            onMouseLeave={() => setEyeConfirmHover(false)}
+            style={{
+              position: 'absolute',
+              right: 10,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: 24,
+              height: 24,
+              opacity: showConfirmPassword ? 0.8 : (eyeConfirmHover ? 0.8 : 0.4),
+              cursor: 'pointer',
+              transition: 'opacity 0.2s',
+            }}
+          />
+        </div>
+        <button
+            type="submit"
+            disabled={isLoading}
+          style={{
+            width: 200,
+              background: isLoading ? '#666' : 'black',
+            color: 'white',
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: 18,
+            padding: '10px 0',
+            border: 'none',
+            borderRadius: 2,
+            marginBottom: 32,
               cursor: isLoading ? 'not-allowed' : 'pointer',
               opacity: isLoading ? 0.7 : 1,
-            }}
-          >
+          }}
+        >
             {isLoading ? 'Creating account...' : 'sign up'}
-          </button>
+        </button>
         </form>
         <a
           href="/"
