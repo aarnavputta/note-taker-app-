@@ -75,8 +75,14 @@ export default function Login() {
         <button
             type="submit"
             disabled={isLoading}
-          className={`w-[200px] text-white text-[18px] py-[10px] px-0 border-none rounded-[2px] mb-[32px] ${isLoading ? 'bg-[#666] cursor-not-allowed opacity-70' : 'bg-black cursor-pointer opacity-100'}`}
-          style={{ fontFamily: 'Geist Mono, monospace' }}
+          className="w-[200px] text-[18px] py-[10px] px-0 border-none rounded-[2px] mb-[32px]"
+          style={{ 
+            fontFamily: 'Geist Mono, monospace',
+            background: isLoading ? '#666' : 'black',
+            color: 'white',
+            cursor: isLoading ? 'not-allowed' : 'pointer',
+            opacity: isLoading ? 0.7 : 1,
+          }}
         >
             {isLoading ? 'Logging in...' : 'continue'}
         </button>
@@ -92,19 +98,19 @@ export default function Login() {
         </div>
         {/* Google button */}
         <button
-          className="w-[320px] bg-[#ddd] text-black text-[18px] py-[10px] px-0 border-none rounded-[2px] mb-4 flex items-center justify-center gap-3 cursor-pointer"
-          style={{ fontFamily: 'Geist Mono, monospace' }}
+          className="w-[320px] bg-[#ddd] text-black text-[18px] py-[10px] px-0 border-none rounded-[2px] mb-[16px] flex items-center justify-center cursor-pointer"
+          style={{ fontFamily: 'Geist Mono, monospace', gap: 12 }}
         >
           <Image src="/Google__G__logo.svg.png" alt="Google logo" width={24} height={24} />
           continue with Google
         </button>
         {/* Facebook button */}
         <button
-          className="w-[320px] bg-[#ddd] text-black text-[18px] py-[10px] px-0 border-none rounded-[2px] flex items-center justify-start gap-3 cursor-pointer"
-          style={{ fontFamily: 'Geist Mono, monospace' }}
+          className="w-[320px] bg-[#ddd] text-black text-[18px] py-[10px] px-0 border-none rounded-[2px] flex items-center justify-start cursor-pointer"
+          style={{ fontFamily: 'Geist Mono, monospace', gap: 12 }}
         >
-          <Image src="/Facebook_Logo_2023.png" alt="Facebook logo" width={28} height={28} className="ml-2" />
-          <span className="ml-2">continue with Facebook</span>
+          <Image src="/Facebook_Logo_2023.png" alt="Facebook logo" width={28} height={28} style={{ marginLeft: 8 }} />
+          <span style={{ marginLeft: 8 }}>continue with Facebook</span>
         </button>
       </div>
     </div>
