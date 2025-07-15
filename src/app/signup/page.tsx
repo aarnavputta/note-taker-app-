@@ -70,51 +70,40 @@ export default function SignUp() {
         <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 40 }}>libello.</span>
       </div>
       {/* Centered sign up box */}
-      <div style={{
-        maxWidth: 600,
-        margin: '0 auto',
-        marginTop: 48,
-        background: '#f3f3f3',
-        borderRadius: 4,
-        padding: '64px 32px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        boxShadow: '0 0 0 0 rgba(0,0,0,0)',
-      }}>
+      <div
+        className="
+          max-w-[600px]
+          mx-auto
+          mt-[48px]
+          bg-[#f3f3f3]
+          rounded-[4px]
+          px-[32px]
+          py-[64px]
+          flex
+          flex-col
+          items-center
+          shadow-none
+        "
+      >
         <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 26, marginBottom: 32, textAlign: 'center' }}>
           Sign up.
         </div>
         
         {/* Error/Success messages */}
         {error && (
-          <div style={{
-            color: '#dc2626',
-            fontFamily: 'Geist Mono, monospace',
-            fontSize: 14,
-            marginBottom: 16,
-            textAlign: 'center',
-            padding: '8px 16px',
-            background: '#fef2f2',
-            borderRadius: 4,
-            border: '1px solid #fecaca'
-          }}>
+          <div
+            className="text-[#dc2626] text-[14px] mb-[16px] text-center px-[16px] py-[8px] bg-[#fef2f2] rounded-[4px] border border-[#fecaca]"
+            style={{ fontFamily: 'Geist Mono, monospace' }}
+          >
             {error}
           </div>
         )}
         
         {success && (
-          <div style={{
-            color: '#059669',
-            fontFamily: 'Geist Mono, monospace',
-            fontSize: 14,
-            marginBottom: 16,
-            textAlign: 'center',
-            padding: '8px 16px',
-            background: '#f0fdf4',
-            borderRadius: 4,
-            border: '1px solid #bbf7d0'
-          }}>
+          <div
+            className="text-[#16a34a] text-[14px] mb-[16px] text-center px-[16px] py-[8px] bg-[#f0fdf4] rounded-[4px] border border-[#bbf7d0]"
+            style={{ fontFamily: 'Geist Mono, monospace' }}
+          >
             {success}
           </div>
         )}
@@ -122,57 +111,31 @@ export default function SignUp() {
         <form onSubmit={handleSubmit} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <input
           type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
           placeholder="name"
-          style={{
-            width: 320,
-            fontFamily: 'Geist Mono, monospace',
-            fontSize: 18,
-            padding: '8px 12px',
-            background: '#ddd',
-            border: 'none',
-            borderRadius: 2,
-            marginBottom: 16,
-            outline: 'none',
-          }}
+          style={{ fontFamily: 'Geist Mono, monospace' }}
+          className="w-[320px] text-[18px] px-[12px] py-[8px] bg-[#ddd] border-none rounded-[2px] mb-[16px] outline-none"
         />
         <input
           type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
           placeholder="email"
-          style={{
-            width: 320,
-            fontFamily: 'Geist Mono, monospace',
-            fontSize: 18,
-            padding: '8px 12px',
-            background: '#ddd',
-            border: 'none',
-            borderRadius: 2,
-            marginBottom: 16,
-            outline: 'none',
-          }}
+          style={{ fontFamily: 'Geist Mono, monospace' }}
+          className="w-[320px] text-[18px] px-[12px] py-[8px] bg-[#ddd] border-none rounded-[2px] mb-[16px] outline-none"
         />
-        <div style={{ position: 'relative', width: 320, marginBottom: 24 }}>
+        <div style={{ position: 'relative', width: 320, marginBottom: 16 }}>
           <input
             type={showPassword ? "text" : "password"}
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
             placeholder="password"
-            style={{
-              width: '100%',
-              fontFamily: 'Geist Mono, monospace',
-              fontSize: 18,
-              padding: '8px 40px 8px 12px',
-              background: '#ddd',
-              border: 'none',
-              borderRadius: 2,
-              outline: 'none',
-            }}
+            style={{ fontFamily: 'Geist Mono, monospace' }}
+            className="w-full text-[18px] px-[12px] py-[8px] bg-[#ddd] border-none rounded-[2px] outline-none pr-10"
           />
           <img
             src="/eye.png"
@@ -196,20 +159,12 @@ export default function SignUp() {
         <div style={{ position: 'relative', width: 320, marginBottom: 24 }}>
           <input
             type={showConfirmPassword ? "text" : "password"}
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleInputChange}
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleInputChange}
             placeholder="confirm password"
-            style={{
-              width: '100%',
-              fontFamily: 'Geist Mono, monospace',
-              fontSize: 18,
-              padding: '8px 40px 8px 12px',
-              background: '#ddd',
-              border: 'none',
-              borderRadius: 2,
-              outline: 'none',
-            }}
+            style={{ fontFamily: 'Geist Mono, monospace' }}
+            className="w-full text-[18px] px-[12px] py-[8px] bg-[#ddd] border-none rounded-[2px] outline-none pr-10"
           />
           <img
             src="/eye.png"
@@ -231,23 +186,18 @@ export default function SignUp() {
           />
         </div>
         <button
-            type="submit"
-            disabled={isLoading}
-          style={{
-            width: 200,
-              background: isLoading ? '#666' : 'black',
-            color: 'white',
+          type="submit"
+          disabled={isLoading}
+          className="w-[200px] text-[18px] py-[10px] px-0 border-none rounded-[2px] mb-[32px]"
+          style={{ 
             fontFamily: 'Geist Mono, monospace',
-            fontSize: 18,
-            padding: '10px 0',
-            border: 'none',
-            borderRadius: 2,
-            marginBottom: 32,
-              cursor: isLoading ? 'not-allowed' : 'pointer',
-              opacity: isLoading ? 0.7 : 1,
+            background: isLoading ? '#666' : 'black',
+            color: 'white',
+            cursor: isLoading ? 'not-allowed' : 'pointer',
+            opacity: isLoading ? 0.7 : 1,
           }}
         >
-            {isLoading ? 'Creating account...' : 'sign up'}
+          {isLoading ? 'Creating account...' : 'sign up'}
         </button>
         </form>
         <a
