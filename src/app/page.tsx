@@ -35,39 +35,23 @@ export default function Login() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: 'white' }}>
+    <div className="min-h-screen bg-white">
       {/* Logo */}
       <div style={{ padding: 32 }}>
         <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 40 }}>libello.</span>
       </div>
       {/* Centered login box */}
-      <div style={{
-        maxWidth: 600,
-        margin: '0 auto',
-        marginTop: 48,
-        background: '#f3f3f3',
-        borderRadius: 4,
-        padding: '64px 32px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        boxShadow: '0 0 0 0 rgba(0,0,0,0)',
-      }}>
+      <div
+        className="max-w-[600px] mx-auto mt-[48px] bg-[#f3f3f3] rounded-[4px] px-[32px] py-[64px] flex flex-col items-center shadow-none"
+      >
         <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 26, marginBottom: 32, textAlign: 'center' }}>
           Log in or sign up.
         </div>
         {error && (
-          <div style={{
-            color: '#dc2626',
-            fontFamily: 'Geist Mono, monospace',
-            fontSize: 14,
-            marginBottom: 16,
-            textAlign: 'center',
-            padding: '8px 16px',
-            background: '#fef2f2',
-            borderRadius: 4,
-            border: '1px solid #fecaca'
-          }}>
+          <div
+            className="text-[#dc2626] text-[14px] mb-[16px] text-center bg-[#fef2f2] rounded-[4px] border border-[#fecaca]"
+            style={{ fontFamily: 'Geist Mono, monospace', padding: '8px 16px' }}
+          >
             {error}
           </div>
         )}
@@ -77,51 +61,22 @@ export default function Login() {
           placeholder="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
-          style={{
-            width: 320,
-            fontFamily: 'Geist Mono, monospace',
-            fontSize: 18,
-            padding: '8px 12px',
-            background: '#ddd',
-            border: 'none',
-            borderRadius: 2,
-            marginBottom: 16,
-            outline: 'none',
-          }}
+          className="w-[320px] text-[18px] bg-[#ddd] border-none rounded-[2px] mb-[16px] outline-none"
+          style={{ fontFamily: 'Geist Mono, monospace', padding: '8px 12px' }}
         />
         <input
           type="password"
           placeholder="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
-          style={{
-            width: 320,
-            fontFamily: 'Geist Mono, monospace',
-            fontSize: 18,
-            padding: '8px 12px',
-            background: '#ddd',
-            border: 'none',
-            borderRadius: 2,
-            marginBottom: 24,
-            outline: 'none',
-          }}
+          className="w-[320px] text-[18px] bg-[#ddd] border-none rounded-[2px] mb-[24px] outline-none"
+          style={{ fontFamily: 'Geist Mono, monospace', padding: '8px 12px' }}
         />
         <button
             type="submit"
             disabled={isLoading}
-          style={{
-            width: 200,
-              background: isLoading ? '#666' : 'black',
-            color: 'white',
-            fontFamily: 'Geist Mono, monospace',
-            fontSize: 18,
-            padding: '10px 0',
-            border: 'none',
-            borderRadius: 2,
-            marginBottom: 32,
-              cursor: isLoading ? 'not-allowed' : 'pointer',
-              opacity: isLoading ? 0.7 : 1,
-          }}
+          className={`w-[200px] text-white text-[18px] py-[10px] px-0 border-none rounded-[2px] mb-[32px] ${isLoading ? 'bg-[#666] cursor-not-allowed opacity-70' : 'bg-black cursor-pointer opacity-100'}`}
+          style={{ fontFamily: 'Geist Mono, monospace' }}
         >
             {isLoading ? 'Logging in...' : 'continue'}
         </button>
@@ -137,46 +92,19 @@ export default function Login() {
         </div>
         {/* Google button */}
         <button
-          style={{
-            width: 320,
-            background: '#ddd',
-            color: 'black',
-            fontFamily: 'Geist Mono, monospace',
-            fontSize: 18,
-            padding: '10px 0',
-            border: 'none',
-            borderRadius: 2,
-            marginBottom: 16,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 12,
-            cursor: 'pointer',
-          }}
+          className="w-[320px] bg-[#ddd] text-black text-[18px] py-[10px] px-0 border-none rounded-[2px] mb-4 flex items-center justify-center gap-3 cursor-pointer"
+          style={{ fontFamily: 'Geist Mono, monospace' }}
         >
           <Image src="/Google__G__logo.svg.png" alt="Google logo" width={24} height={24} />
           continue with Google
         </button>
         {/* Facebook button */}
         <button
-          style={{
-            width: 320,
-            background: '#ddd',
-            color: 'black',
-            fontFamily: 'Geist Mono, monospace',
-            fontSize: 18,
-            padding: '10px 0',
-            border: 'none',
-            borderRadius: 2,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            gap: 12,
-            cursor: 'pointer',
-          }}
+          className="w-[320px] bg-[#ddd] text-black text-[18px] py-[10px] px-0 border-none rounded-[2px] flex items-center justify-start gap-3 cursor-pointer"
+          style={{ fontFamily: 'Geist Mono, monospace' }}
         >
-          <Image src="/Facebook_Logo_2023.png" alt="Facebook logo" width={28} height={28} style={{ marginLeft: 8 }} />
-          <span style={{ marginLeft: 8 }}>continue with Facebook</span>
+          <Image src="/Facebook_Logo_2023.png" alt="Facebook logo" width={28} height={28} className="ml-2" />
+          <span className="ml-2">continue with Facebook</span>
         </button>
       </div>
     </div>
