@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
+import { signIn } from 'next-auth/react';
 
 export default function Login() {
   const router = useRouter();
@@ -16,16 +17,19 @@ export default function Login() {
     setError("");
     setIsLoading(true);
     try {
-      const res = await fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+      const res = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
       });
-      const data = await res.json();
-      if (res.ok) {
+      if (res?.ok) {
         router.push("/homepage/home");
       } else {
-        setError(data.error || "Login failed");
+        if (res?.error === "CredentialsSignin") {
+          setError("Invalid email or password");
+        } else {
+          setError(res?.error || "Login failed");
+        }
       }
     } catch (err) {
       setError("Network error. Please try again.");
@@ -100,17 +104,19 @@ export default function Login() {
         <button
           className="w-[320px] bg-[#ddd] text-black text-[18px] py-[10px] px-0 border-none rounded-[2px] mb-[16px] flex items-center justify-center cursor-pointer"
           style={{ fontFamily: 'Geist Mono, monospace', gap: 12 }}
+          onClick={() => signIn('google', { callbackUrl: '/homepage/home' })}
         >
           <Image src="/Google__G__logo.svg.png" alt="Google logo" width={24} height={24} />
           continue with Google
         </button>
-        {/* Facebook button */}
+        {/* Facebook button replaced with GitHub */}
         <button
           className="w-[320px] bg-[#ddd] text-black text-[18px] py-[10px] px-0 border-none rounded-[2px] flex items-center justify-start cursor-pointer"
           style={{ fontFamily: 'Geist Mono, monospace', gap: 12 }}
+          onClick={() => signIn('github', { callbackUrl: '/homepage/home' })}
         >
-          <Image src="/Facebook_Logo_2023.png" alt="Facebook logo" width={28} height={28} style={{ marginLeft: 8 }} />
-          <span style={{ marginLeft: 8 }}>continue with Facebook</span>
+          <Image src="/github.png" alt="GitHub logo" width={28} height={28} style={{ marginLeft: 8 }} />
+          <span style={{ marginLeft: 8 }}>continue with GitHub</span>
         </button>
       </div>
     </div>

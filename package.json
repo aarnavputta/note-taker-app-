@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/typeorm-adapter": "^2.10.0",
     "@types/bcryptjs": "^2.4.6",
     "bcryptjs": "^3.0.2",
-    "mssql": "^11.0.1",
+    "mssql": "^9.3.2",
     "next": "^15.3.4",
+    "next-auth": "^4.24.11",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.5.0"
