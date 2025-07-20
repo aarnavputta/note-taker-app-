@@ -1,127 +1,75 @@
-"use client";
-import { useRef, useState, useEffect } from 'react';
+import Link from "next/link";
 
-export default function Notes() {
-  const [note, setNote] = useState('');
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+export default async function NotesPage() {
 
-  // Auto-expand textarea as user types
-  useEffect(() => {
-    if (textAreaRef.current) {
-      textAreaRef.current.style.height = 'auto';
-      textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 'px';
-    }
-  }, [note]);
+  let meetingsInfo: MeetingCardPropType[] = [
+    { title: "Meeting 1", date: "June 5th 2025", id: "m1" },
+    { title: "Meeting 2", date: "June 7th 2025", id: "m2" },
+    { title: "Meeting 3", date: "June 12th 2025", id: "m3" },
+    { title: "Meeting 4", date: "June 18th 2025", id: "m4" },
+    { title: "Meeting 5", date: "June 25th 2025", id: "m5" },
+    { title: "Meeting 6", date: "June 30th 2025", id: "m6" },
+    { title: "Meeting 7", date: "July 5th 2025", id: "m7" },
+    { title: "Meeting 8", date: "July 7th 2025", id: "m8" },
+    { title: "Meeting 9", date: "July 8th 2025", id: "m9" },
+    { title: "Meeting 10", date: "July 10th 2025", id: "m10" },
+    { title: "Meeting 11", date: "July 15th 2025", id: "m11" },
+  ];
 
-  // Copy note to clipboard
-  const handleCopy = () => {
-    if (textAreaRef.current) {
-      textAreaRef.current.select();
-      document.execCommand('copy');
-    }
-  };
+  const userID = "testuser";
+  const res = await fetch(`${process.env.API_URL}/users/${userID}/meetings`);
 
-  // Download note as .txt
-  const handleDownload = () => {
-    const element = document.createElement('a');
-    const file = new Blob([note], { type: 'text/plain' });
-    element.href = URL.createObjectURL(file);
-    element.download = 'note.txt';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-  };
-
-  // Clear note
-  const handleDelete = () => {
-    setNote('');
-    if (textAreaRef.current) {
-      textAreaRef.current.focus();
-    }
-  };
+  if(res.ok) {
+    const data = await res.json();
+    console.log(`Response: ${JSON.stringify(data)}`);
+    meetingsInfo = Object.keys(data.sessions).map((id) => (
+      {
+        title: data.sessions[id],
+        date: "not found",
+        id: id
+      }
+    ));
+  } else {
+    console.log("error");
+  }
 
   return (
-    <div style={{
-      width: '100%',
-      minHeight: '100vh',
-      backgroundColor: 'white',
-      position: 'relative',
-    }}>
-      <div style={{
-        position: 'relative',
-        left: 0,
-        width: 'calc(100vw - 250px)', // Sidebar is 250px
-        height: '125px',
-        backgroundColor: 'rgba(217,217,217,0.2)',
-        display: 'flex',
-        alignItems: 'center',
-        paddingLeft: '24px',
-        margin: 0,
-        marginBottom: '32px',
-        boxSizing: 'border-box',
-      }}>
-        <span style={{
-          fontFamily: 'Geist Mono, monospace',
-          fontSize: 80,
-          color: '#000',
-          lineHeight: 1,
-        }}>notes.</span>
+    <div className="w-full h-full px-10">
+      {/* Title */}
+      <div className="w-full h-[10%] flex items-end">
+        <p className="font-mono text-3xl h-12 flex items-center">View Meetings</p>
       </div>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        width: '100%',
-        minHeight: 'calc(100vh - 125px)',
-      }}>
-        <div style={{
-          position: 'relative',
-          width: 700,
-          maxHeight: '80vh',
-          background: '#f3f3f3',
-          borderRadius: 24,
-          boxShadow: '0 0 0 0 rgba(0,0,0,0)',
-          marginTop: 32,
-          padding: '32px 32px 32px 32px',
-          overflowY: 'auto',
-        }}>
-          {/* Icons */}
-          <div style={{
-            position: 'absolute',
-            top: 24,
-            right: 32,
-            display: 'flex',
-            gap: 20,
-          }}>
-            <img src="/copy.svg" alt="Copy" title="Copy" style={{ width: 24, height: 24, cursor: 'pointer' }} onClick={handleCopy} />
-            <img src="/download-simple.svg" alt="Download" title="Download" style={{ width: 24, height: 24, cursor: 'pointer' }} onClick={handleDownload} />
-            <img src="/trash.svg" alt="Delete" title="Delete" style={{ width: 24, height: 24, cursor: 'pointer' }} onClick={handleDelete} />
+
+      {meetingsInfo.length == 0
+        ? (
+          <div className="w-full h-full flex items-center">
+            <p className="w-full h-1/3 text-center font-mono text-5xl text-[#A1A1A1]">Start a meeting to view your meeting notes</p>
           </div>
-          {/* Textarea */}
-          <textarea
-            ref={textAreaRef}
-            value={note}
-            onChange={e => setNote(e.target.value)}
-            placeholder="Type your notes here..."
-            style={{
-              width: '100%',
-              minHeight: 40,
-              resize: 'none',
-              border: 'none',
-              outline: 'none',
-              background: 'transparent',
-              fontFamily: 'Geist Mono, monospace',
-              fontSize: 20,
-              color: '#222',
-              padding: 0,
-              marginTop: 40,
-              boxSizing: 'border-box',
-              overflow: 'hidden',
-            }}
-            rows={1}
-          />
+        ) : (
+        <div className="w-full h-full grid grid-cols-4 py-12">
+          {meetingsInfo.map((item, i) => (
+            <MeetingCard key={i} title={item.title} date={item.date} id={item.id} />
+          ))}
         </div>
-      </div>
+      )}
     </div>
   );
-} 
+}
+
+type MeetingCardPropType = {
+  title: string,
+  date: string,
+  id: string
+};
+
+function MeetingCard({ title, date, id }: MeetingCardPropType) {
+  return (
+    <Link
+      className="w-60 h-30 rounded-lg border border-[#A9A9A9] p-2 cursor-pointer bg-[#D9D9D9]/20"
+      href={`/homepage/notes/${id}`}
+    >
+      <p className="font-mono text-black/60 text-2xl font-bold">{title}</p>
+      <p className="font-mono text-[#A1A1A1] text-xs">{`Transcribed on ${date}`}</p>
+    </Link>
+  )
+}
