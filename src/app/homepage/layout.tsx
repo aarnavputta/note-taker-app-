@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Header from "@/components/Header";
+import SideBar from "@/components/SideBar";
 
 export default function HomepageLayout({ children }: { children: React.ReactNode }) {
   const tabs: NavOptionType[] = [
@@ -14,7 +15,7 @@ export default function HomepageLayout({ children }: { children: React.ReactNode
     <div className="w-screen h-screen flex flex-row">
       {/* Sidebar */}
       <div className="w-[15%] h-full">
-        <Sidebar navOptions={tabs}/>
+        <SideBar navOptions={tabs} />
       </div>
 
       <div className="w-[85%] h-full flex flex-col">
@@ -38,22 +39,22 @@ type NavOptionType = {
   href: string
 }
 
-function Sidebar({ navOptions }: { navOptions: NavOptionType[] }) {
-  return (
-    <div className="w-full h-full bg-[#e0e0e0]">
-      <div className="w-full h-[10%] flex items-center">
-        <p className="w-full [font-family:var(--font-geist-mono),monospace] text-center text-3xl">libello.</p>
-      </div>
-      <div className="w-full h-[90%] flex flex-col gap-5">
-        {navOptions.map((item, i) => (
-          <div key={i} className="w-full h-[8%]">
-            <SideBarOption key={i} text={item.optionText} href={item.href} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+// function Sidebar({ navOptions }: { navOptions: NavOptionType[] }) {
+//   return (
+//     <div className="w-full h-full bg-[#D9D9D9]">
+//       <div className="w-full h-[10%] flex items-center">
+//         <p className="w-full [font-family:var(--font-geist-mono),monospace] text-center text-3xl">libello.</p>
+//       </div>
+//       <div className="w-full h-[90%] flex flex-col gap-5">
+//         {navOptions.map((item, i) => (
+//           <div key={i} className="w-full h-[8%]">
+//             <SideBarOption key={i} text={item.optionText} href={item.href} />
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
 
 function SideBarOption({ text, href }: { text: string, href: string }) {
   return (
