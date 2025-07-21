@@ -4,6 +4,6 @@ export { default } from "next-auth/middleware"
 export const config = {
   matcher: [
     // Exclude root (login) and signup, apply to everything else
-    // "/((?!$|signup).*)"
+    "/((?!$|signup).*)"
   ]
 }

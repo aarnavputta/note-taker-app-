@@ -9,6 +9,7 @@ import { RefObject, useEffect, useRef, useState } from "react";
 import SearchBar from "./SearchBar";
 import StorageCredits from "./StorageCredits";
 import TranscriptionCredits from "./TranscriptionCredits";
+import { signOut } from "next-auth/react";
 // import { MdOutlineKeyboardArrowDown } from "react-icons/lib/md/MdOutlineKeyboardArrowDown";
 
 export default function Header() {
@@ -52,7 +53,9 @@ function ProfileButton({ headerRef }: { headerRef: RefObject<HTMLDivElement> }) 
 
 function ProfilePopup({ headerRef, handleClick }: { headerRef: RefObject<HTMLDivElement>, handleClick: () => void }) {
   const [mounted, setMounted] = useState(false);
-  const items = ["sign out"];
+  const items = [
+    {text: "sign out", clickFunc: () => signOut()}
+  ];
 
   useEffect(() => {
     setMounted(true)
@@ -81,8 +84,12 @@ function ProfilePopup({ headerRef, handleClick }: { headerRef: RefObject<HTMLDiv
           </div>
           <div className="w-full h-21 flex flex-col h-max">
             {items.map((item, i) => (
-              <button key={i} className="w-full h-10 hover:bg-[#D9D9D9] p-2">
-                <p className="w-full text-start font-mono text-sm ">{item}</p>
+              <button
+                key={i}
+                className="w-full h-10 hover:bg-[#D9D9D9] p-2"
+                onClick={item.clickFunc}
+              >
+                <p className="w-full text-start font-mono text-sm ">{item.text}</p>
               </button>
             ))}
           </div>
