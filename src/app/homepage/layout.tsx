@@ -1,35 +1,40 @@
+"use client";
+
 import Link from "next/link";
 import Header from "@/components/Header";
 import SideBar from "@/components/SideBar";
+import { SessionProvider } from "next-auth/react";
 
 export default function HomepageLayout({ children }: { children: React.ReactNode }) {
   const tabs: NavOptionType[] = [
     { optionText: "home.", href: "/homepage/home" },
-    { optionText: "add meeting.", href: "/homepage/add-meeting" },
+    { optionText: "calendar.", href: "/homepage/add-meeting" },
     { optionText: "notes.", href: "/homepage/notes" },
     { optionText: "ask ai.", href: "/homepage/ask-ai" },
     { optionText: "settings.", href: "/homepage/settings" }
   ];
 
   return (
-    <div className="w-screen h-screen flex flex-row">
-      {/* Sidebar */}
-      <div className="w-[15%] h-full">
-        <SideBar navOptions={tabs} />
-      </div>
-
-      <div className="w-[85%] h-full flex flex-col">
-        {/* Header */}
-        <div className="w-full h-[10%]">
-          <Header />
+    <SessionProvider>
+      <div className="w-screen h-screen flex flex-row">
+        {/* Sidebar */}
+        <div className="w-[15%] h-full">
+          <SideBar navOptions={tabs} />
         </div>
 
-        {/* Page Content */}
-        <div className="w-full h-[90%]">
-          {children}
+        <div className="w-[85%] h-full flex flex-col">
+          {/* Header */}
+          <div className="w-full h-[10%]">
+            <Header />
+          </div>
+
+          {/* Page Content */}
+          <div className="w-full h-[90%]">
+            {children}
+          </div>
         </div>
       </div>
-    </div>
+    </SessionProvider>
   );
 }
 

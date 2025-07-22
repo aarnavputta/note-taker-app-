@@ -1,6 +1,5 @@
-export default function Settings() {
-  return (
-    <div>
-    </div>
-  );
+import { redirect } from "next/navigation";
+
+export default function SettingsPage() {
+  redirect('/homepage/settings/personal');
 } 

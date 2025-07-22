@@ -3,23 +3,18 @@
 // Remove hamburger button, overlay, and all mobile/hamburger logic
 // Restore sidebar and main content to original format
 
+import './globals.css';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-// import { SessionProvider } from "next-auth/react";
-import SessionWrapper from "@/components/SessionWrapper";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap"
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap"
 });
 
 export const metadata: Metadata = {
@@ -35,11 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased m-0 p-0 bg-white w-screen h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased m-0 p-0 bg-white min-h-screen`}
       >
-        <SessionWrapper>
-          {children}
-        </SessionWrapper>
+        {children}
       </body>
     </html>
   );
