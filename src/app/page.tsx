@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
@@ -106,7 +105,7 @@ export default function Login() {
           style={{ fontFamily: 'Geist Mono, monospace', gap: 12 }}
           onClick={() => signIn('google', { callbackUrl: '/homepage/home' })}
         >
-          <Image src="/Google__G__logo.svg.png" alt="Google logo" width={24} height={24} />
+          <img src="/Google__G__logo.svg.png" alt="Google logo" width={24} height={24} />
           continue with Google
         </button>
         {/* Facebook button replaced with GitHub */}
@@ -115,7 +114,7 @@ export default function Login() {
           style={{ fontFamily: 'Geist Mono, monospace', gap: 12 }}
           onClick={() => signIn('github', { callbackUrl: '/homepage/home' })}
         >
-          <Image src="/github.png" alt="GitHub logo" width={28} height={28} style={{ marginLeft: 8 }} />
+          <img src="/github.png" alt="GitHub logo" width={28} height={28} style={{ marginLeft: 8 }} />
           <span style={{ marginLeft: 8 }}>continue with GitHub</span>
         </button>
       </div>
