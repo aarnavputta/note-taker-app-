@@ -1,9 +1,7 @@
-export default function HomePage() {
-  return (
-    <div className="w-full h-full">
+import { redirect } from "next/navigation";
 
-    </div>
-  )
+export default function HomePage() {
+  redirect('/homepage/home/recents');
 }
 
 
