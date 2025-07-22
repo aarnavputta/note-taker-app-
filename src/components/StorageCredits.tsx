@@ -80,7 +80,7 @@ function StoragePopup({ handleClose, pos }: { handleClose: () => void, pos: {top
 
   return (
     <div
-      className={`fixed transition-all duration-300 z-10 ${mounted ? "backdrop-blur-sm" : ""}`}
+      className={`fixed transition-all duration-300 w-screen h-screen z-10 ${mounted ? "backdrop-blur-sm" : ""}`}
       style={{ left: 0, top: 80, width: '100vw', height: 'calc(100vh - 80px)' }}
       onClick={() => {
         handleClose()
@@ -88,11 +88,11 @@ function StoragePopup({ handleClose, pos }: { handleClose: () => void, pos: {top
     >
       <div className="relative w-full h-full">
         <div
-          className={`absolute w-60 h-40
+          className={`absolute top-0 w-60 h-40
             flex flex-col h-max z-20
             transition-all duration-300 ${mounted ? "opacity-100" : "opacity-0"}
             bg-[#D9D9D9]/40`}
-          style={{ top: pos.top - 80, left: pos.left }}
+          style={{ left: pos.left }}
           onClick={e => e.stopPropagation()}
         >
           <div className="w-full h-15 px-2">

@@ -82,6 +82,15 @@ function ProfilePopup({ headerRef, handleClick }: { headerRef: RefObject<HTMLDiv
     setMounted(true)
   }, []);
 
+  // Close on click outside
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      handleClick();
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [handleClick]);
+
   return (
     <div
       className={`fixed transition-all duration-300 w-screen h-screen z-10 ${mounted ? "backdrop-blur-sm" : ""}`}
