@@ -5,6 +5,16 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from 'bcryptjs';
 import sql from 'mssql';
 
+// Extend the Session type to include access tokens
+declare module "next-auth" {
+    interface Session {
+        accessToken?: string;
+        accessTokenExpires?: number;
+        refreshToken?: string;
+        idToken?: string;
+    }
+}
+
 export const options: NextAuthOptions = {
     providers: [
         GitHubProvider({
@@ -14,6 +24,16 @@ export const options: NextAuthOptions = {
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+            authorization: {
+                params: {
+                    scope: [
+                        'openid',
+                        'https://www.googleapis.com/auth/userinfo.email',
+                        'https://www.googleapis.com/auth/userinfo.profile',
+                        'https://www.googleapis.com/auth/calendar'
+                    ].join(' ')
+                }
+            }
         }),
         CredentialsProvider({
             name: "Credentials",
@@ -123,11 +143,30 @@ export const options: NextAuthOptions = {
                 session.user.name = token.name;
                 session.user.email = token.email;
             }
+            
+            // Include access token in session (server-side only)
+            session.accessToken = token.accessToken as string;
+            session.accessTokenExpires = token.accessTokenExpires as number;
+            session.refreshToken = token.refreshToken as string;
+            session.idToken = token.idToken as string;
+            
             return session;
         },
-        async jwt({ token, user }) {
+        async jwt({ token, user, account }) {
             if (user?.name) token.name = user.name;
             if (user?.email) token.email = user.email;
+            
+            // Store access token and refresh token in JWT
+            if (account && user) {
+                return {
+                    ...token,
+                    accessToken: account.access_token,
+                    accessTokenExpires: account.expires_in,
+                    refreshToken: account.refresh_token,
+                    idToken: account.id_token,
+                    user,
+                };
+            }
             return token;
         }
     },
