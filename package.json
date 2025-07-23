@@ -12,6 +12,8 @@
     "@auth/typeorm-adapter": "^2.10.0",
     "@types/bcryptjs": "^2.4.6",
     "bcryptjs": "^3.0.2",
+    "google-auth-library": "^10.1.0",
+    "googleapis": "^153.0.0",
     "mssql": "^9.3.2",
     "next": "^15.3.4",
     "next-auth": "^4.24.11",
